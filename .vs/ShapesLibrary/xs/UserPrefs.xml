@@ -1,0 +1,35 @@
+﻿<Properties StartupConfiguration="{6A8C7921-6300-4E69-B19A-2CB26638CBC4}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ShapesLibrary/CircleArea.cs">
+    <Files>
+      <File FileName="ShapesLibrary/Program.cs" Line="75" Column="1" />
+      <File FileName="ShapesLibrary/BaseShape.cs" Line="42" Column="4" />
+      <File FileName="ShapesLibrary/BaseMeasure.cs" Line="6" Column="1" />
+      <File FileName="ShapesLibrary/BaseOperator.cs" Line="8" Column="1" />
+      <File FileName="ShapesLibrary/ShapeGroup.cs" Line="43" Column="1" />
+      <File FileName="ShapesLibrary/Rectangle.cs" Line="24" Column="1" />
+      <File FileName="ShapesLibrary/Circle.cs" Line="15" Column="6" />
+      <File FileName="ShapesLibrary/Cuboid.cs" Line="18" Column="4" />
+      <File FileName="ShapesLibrary/CuboidVolume.cs" Line="12" Column="1" />
+      <File FileName="ShapesLibrary/RectangleArea.cs" Line="12" Column="1" />
+      <File FileName="ShapesLibrary/CircleArea.cs" Line="10" Column="6" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="ShapesLibrary" expanded="True">
+            <Node name="ShapesLibrary" expanded="True">
+              <Node name="CircleArea.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.ShapesLibrary PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

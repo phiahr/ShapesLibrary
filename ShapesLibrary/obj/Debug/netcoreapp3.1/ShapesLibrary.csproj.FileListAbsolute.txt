@@ -1,0 +1,13 @@
+/Users/Pipo/Projects/ShapesLibrary/ShapesLibrary/obj/Debug/netcoreapp3.1/ShapesLibrary.csproj.AssemblyReference.cache
+/Users/Pipo/Projects/ShapesLibrary/ShapesLibrary/obj/Debug/netcoreapp3.1/ShapesLibrary.GeneratedMSBuildEditorConfig.editorconfig
+/Users/Pipo/Projects/ShapesLibrary/ShapesLibrary/obj/Debug/netcoreapp3.1/ShapesLibrary.AssemblyInfoInputs.cache
+/Users/Pipo/Projects/ShapesLibrary/ShapesLibrary/obj/Debug/netcoreapp3.1/ShapesLibrary.AssemblyInfo.cs
+/Users/Pipo/Projects/ShapesLibrary/ShapesLibrary/obj/Debug/netcoreapp3.1/ShapesLibrary.csproj.CoreCompileInputs.cache
+/Users/Pipo/Projects/ShapesLibrary/ShapesLibrary/bin/Debug/netcoreapp3.1/ShapesLibrary.deps.json
+/Users/Pipo/Projects/ShapesLibrary/ShapesLibrary/bin/Debug/netcoreapp3.1/ShapesLibrary.runtimeconfig.json
+/Users/Pipo/Projects/ShapesLibrary/ShapesLibrary/bin/Debug/netcoreapp3.1/ShapesLibrary.runtimeconfig.dev.json
+/Users/Pipo/Projects/ShapesLibrary/ShapesLibrary/bin/Debug/netcoreapp3.1/ShapesLibrary.dll
+/Users/Pipo/Projects/ShapesLibrary/ShapesLibrary/bin/Debug/netcoreapp3.1/ShapesLibrary.pdb
+/Users/Pipo/Projects/ShapesLibrary/ShapesLibrary/obj/Debug/netcoreapp3.1/ShapesLibrary.dll
+/Users/Pipo/Projects/ShapesLibrary/ShapesLibrary/obj/Debug/netcoreapp3.1/ShapesLibrary.pdb
+/Users/Pipo/Projects/ShapesLibrary/ShapesLibrary/obj/Debug/netcoreapp3.1/ShapesLibrary.genruntimeconfig.cache
