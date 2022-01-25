@@ -51,7 +51,8 @@ namespace ShapesLibrary
         // add a list of measure values together 
         public abstract double AddAll(List<double> results);
 
-        public abstract double CalculateGroup(Group group);
+        //public abstract double CalculateGroup(Group group);
+        public abstract double Calculate(List<Shape> shapes);
 
     }
 
@@ -79,24 +80,38 @@ namespace ShapesLibrary
             return result;
         }
 
-        // Problem einer Funktion die zwei Shapes als Parameter annimmt, wie rechnet man 3 Shapes zusammen, die ersten beiden werden zusammengerechnet, dann hat man eine Zahl und ein verbleibendes Shape objekt.
-        // Nun kann man das verbleibende Shape Objekt mit keiner weiteren Shape zusammen rechnen nur mit der Zahl. Extra ne Funktion zum zusammenrechnen einer Zahl und Shape macht keinen Sinn, außerdem müsste man tracken ob in einer Gruppe
-        // eine gerade oder ungerade Anzahl an Shapes sind, etc.
-        public override double CalculateGroup(Group group)
+        // alternative way of calculating multiple shapes
+        public override double Calculate(List<Shape> shapes)
         {
             double result = 0;
-        
-            foreach (Shape shape in group.shapes)
+            foreach(Shape shape in shapes)
             {
                 result += shape.GetMeasureValue();
             }
             return result;
         }
+        // Problem einer Funktion die zwei Shapes als Parameter annimmt, wie rechnet man 3 Shapes zusammen, die ersten beiden werden zusammengerechnet, dann hat man eine Zahl und ein verbleibendes Shape objekt.
+        // Nun kann man das verbleibende Shape Objekt mit keiner weiteren Shape zusammen rechnen nur mit der Zahl. Extra ne Funktion zum zusammenrechnen einer Zahl und Shape macht keinen Sinn, außerdem müsste man tracken ob in einer Gruppe
+        // eine gerade oder ungerade Anzahl an Shapes sind, etc.
+
+
+
+
+        //public override double CalculateGroup(Group group)
+        //{
+        //    double result = 0;
+        
+        //    foreach (Shape shape in group.shapes)
+        //    {
+        //        result += shape.GetMeasureValue();
+        //    }
+        //    return result;
+        //}
     }
 
     public class Group
     {
-        public readonly List<Shape> shapes;
+        List<Shape> shapes;
         public Group()
         {
             shapes = new List<Shape>();            
@@ -127,16 +142,23 @@ namespace ShapesLibrary
 
         public double CalculateMeasure(Operator op)
         {
+            return op.Calculate(shapes);
+        }
+
+        public double CalculateMeasureAlternative(Operator op)
+        {
             List<double> results = new List<double>();
             int i = 0;
+            // since stepsize is 2 for the following loop we need an even number of shapes. So if we have an odd number, the first one will be directly added to the results list and skipped in the loop so that the last element won't get left out
             if (shapes.Count % 2 == 1)
             {
                 results.Add(shapes[0].GetMeasureValue());
                 i = 1;
             }
+
+            // stepsize is 2, to not include the previous shapes[i+1] in the next calculation
             for (; i < shapes.Count - 1; i+=2)
             {
-                // bullshit, now adding the every value twice, except the first and last
                 results.Add(op.Calculate(shapes[i], shapes[i + 1]));
             }
             double result = op.AddAll(results);
