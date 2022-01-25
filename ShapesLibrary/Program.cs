@@ -3,209 +3,146 @@ using System.Collections.Generic;
 
 namespace ShapesLibrary
 {
-    public interface IShape
+
+    public abstract class Shape
     {
-        public IMeasure GetMeasure();
+        public abstract double GetMeasureValue();
     }
 
-    //public class Foo
-    //{
-    //    public Bar Measure { get; set; }
-    //}
-
-    public abstract class Shape<T>: IShape
+    public abstract class Measure<TShape>
     {
-        public Measure<T> Measure { get; set; }
-        public IMeasure GetMeasure() {
-            return Measure;
-        }
-        //public IMeasure Measure { get; set; }
-
+        public abstract double GetValue(TShape shape);
     }
-
-    public interface IMeasure
+    public class RectangleArea : Measure<Rectangle>
     {
-        public double GetFoo(IShape shape);
-    }
-
-    //public class Bar
-    //{
-    //    public double GetValue(IShape shape);
-    //}
-
-    public abstract class Measure<T>: IMeasure
-    {
-        public abstract double GetValue(T shape);
-        public double GetFoo(IShape shape)
+        public override double GetValue(Rectangle rect)
         {
-            return GetValue((T)shape);
-        }
-    public Measure<T> Cast<X>()
-        {
-            return this;
-        }
 
+            return rect.Width * rect.Height;
+        }
     }
 
-    public class Rectangle : Shape<Rectangle>
-    {
-        public readonly int Width;
-        public readonly int Height;
 
+    public class Rectangle: Shape
+    {
+        public int Width { get; }
+        public int Height { get; }
+
+        public Measure<Rectangle> Measure { get;set; }
         public Rectangle(int width, int height)
         {
             Width = width;
             Height = height;
-
-            // default Measure
-            //RectangleArea<Shape> m = new RectangleArea<Shape>();
-            //Measure<Shape> foo = m;
-            Measure<Rectangle> f = new RectangleArea();
-
-            //f.Cast<Shape>();
-            //Measure = f.Cast<Shape>();
-            Measure = f;
+            Measure = new RectangleArea();
         }
-    }
 
-    //public class Circle : Shape
-    //{
-    //    public readonly int Radius;
-
-    //    public Circle(int radius)
-    //    {
-    //        Radius = radius;
-
-    //        // default Measure
-    //        Measure = new RectangleArea();
-    //    }
-    //}
-
-    public class RectangleArea : Measure<Rectangle>
-    {
-        public override double GetValue(Rectangle rectangle)
+        public override double GetMeasureValue()
         {
-            //return 0;
-            return rectangle.Width * rectangle.Height;
+            return Measure.GetValue(this);
         }
-
-
-        //public override double GetValue(Shape shape)
-        //{
-        //    var rectangle = (Rectangle)shape;
-        //    return rectangle.Width * rectangle.Height;
-        //}
     }
 
-
-    // making operator a generic class didn't make any sense, since you don't want to specify any type when you instantiate an operator
     public abstract class Operator
     {
-        public abstract double Calculate(IMeasure x, IMeasure y);
+        // calculate the combined measure of two shapes
+        public abstract double Calculate(Shape x, Shape y);
+        //public abstract double Calculate(Shape x, Shape y, Shape z);
+
+        // add a list of measure values together 
+        public abstract double AddAll(List<double> results);
+
+        public abstract double CalculateGroup(Group group);
+
     }
 
-    //public class Addition : Operator
-    //{
-    //    public override double Calculate(IMeasure x, IMeasure y)
-    //    {
-    //        double result = x + y;
-    //        return result;
-    //    }
-    //}
+    public class Addition: Operator
+    {
+        public override double Calculate(Shape x, Shape y)
+        {
+            double result = x.GetMeasureValue() + y.GetMeasureValue();
+            return result;
+        }
+
+        public double Calculate<T1,T2>(T1 x, T2 y) where T1: Shape where T2: Shape
+        {
+            double result = x.GetMeasureValue() + y.GetMeasureValue();
+            return result;
+        }
+
+        // es benötigt immer noch einer Funktion die zwei doubles als Parameter akzeptiert um mehr als 2 Shape Measures zusammenzurechnen (altes Ergebnis, also Summe der vorherigen beiden Shapes, plus nächste Shape)
+        public override double AddAll(List<double> results)
+        {
+            double result = 0;
+            foreach (double value in results) {
+                result += value;
+            }
+            return result;
+        }
+
+        // Problem einer Funktion die zwei Shapes als Parameter annimmt, wie rechnet man 3 Shapes zusammen, die ersten beiden werden zusammengerechnet, dann hat man eine Zahl und ein verbleibendes Shape objekt.
+        // Nun kann man das verbleibende Shape Objekt mit keiner weiteren Shape zusammen rechnen nur mit der Zahl. Extra ne Funktion zum zusammenrechnen einer Zahl und Shape macht keinen Sinn, außerdem müsste man tracken ob in einer Gruppe
+        // eine gerade oder ungerade Anzahl an Shapes sind, etc.
+        public override double CalculateGroup(Group group)
+        {
+            double result = 0;
+        
+            foreach (Shape shape in group.shapes)
+            {
+                result += shape.GetMeasureValue();
+            }
+            return result;
+        }
+    }
 
     public class Group
     {
-        List<IShape> shapes;
+        public readonly List<Shape> shapes;
         public Group()
         {
-            shapes = new List<IShape>();
-            //var shape = shapes[0];
-
-            //shape.GetMeasure().GetValue(shape);
+            shapes = new List<Shape>();            
         }
-        //public double CalculateMeasure(Operator op)
-        //{
 
-        //}
-
-
-        //public double CalculateMeasure(Operator op)
-        //{
-        //    double result = shapes[0].Measure.Value;
-
-        //    if (shapes.Count > 1)
-        //    {
-        //        foreach (Shape< shape in shapes.GetRange(1, shapes.Count - 1))
-        //        {
-        //            result = op.Calculate(result, shape.Measure.Value);
-        //        }
-        //    }
-
-        //    return result;
-        //}
-
-        public void AddShape(IShape shape)
+        public void AddShape(Shape shape)
         {
             shapes.Add(shape);
         }
 
-        public void foo()
+        public void RemoveShape(Shape shape)
         {
-            Console.WriteLine("faea");
+            shapes.Remove(shape);
+        }
 
-            foreach (IShape shape in shapes)
+        public double Foo(Operator op)
+        {
+            List<double> results = new List<double>();
+
+            for (int i = 0; i < shapes.Count-1; i++)
             {
-                Console.WriteLine("af");
-
-                Console.WriteLine($"Test:  {shape.GetMeasure().GetFoo(shape)}");
+                // bullshit, now adding the every value twice, except the first and last
+                results.Add(op.Calculate(shapes[i], shapes[i + 1]));
             }
+            double result = op.AddAll(results);
+            return result;
+        }
+
+        public double CalculateMeasure(Operator op)
+        {
+            List<double> results = new List<double>();
+            int i = 0;
+            if (shapes.Count % 2 == 1)
+            {
+                results.Add(shapes[0].GetMeasureValue());
+                i = 1;
+            }
+            for (; i < shapes.Count - 1; i+=2)
+            {
+                // bullshit, now adding the every value twice, except the first and last
+                results.Add(op.Calculate(shapes[i], shapes[i + 1]));
+            }
+            double result = op.AddAll(results);
+            return result;
         }
     }
-
-    //public abstract class Shape
-    //{
-    //    public abstract double GetMeasureValue();
-    //}
-
-    //public abstract class Measure<TShape>
-    //{
-    //    public abstract double GetValue(TShape shape);
-    //    public abstract double Calculate(TShape shape);
-    //}
-    //public class AreaRecttangle: Measure<Rectangle>
-    //{
-
-
-    //    public override double GetValue(Rectangle rect)
-    //    {
-
-    //        return Calculate(rect);
-    //    }
-
-    //    public override double Calculate(Rectangle rect)
-    //    {
-    //        return rect.width * rect.height;
-    //    }
-    //}
-
-    //public class Rectangle : Shape
-    //{
-    //    public int width;
-    //    public int height;
-    //    public Measure<Rectangle> _measure;
-    //    public Rectangle(int width, int height)
-    //    {
-    //        this.width = width;
-    //        this.height = height;
-    //        _measure = new AreaRecttangle();
-
-    //    }
-    //    public override double GetMeasureValue()
-    //    {
-    //        return _measure.GetValue(this);
-    //    }
-    //}
-
 
     class Program
     {
@@ -215,14 +152,32 @@ namespace ShapesLibrary
             var rect2 = new Rectangle(2, 4);
             var rectArea = new RectangleArea();
             rectArea.GetValue(rect2);
-
             Console.WriteLine($"rect{rectArea.GetValue(rect)}");
             Console.WriteLine($"rect{rectArea.GetValue(rect2)}");
+            Rectangle x = new Rectangle(2, 4);
+            var foo = new Rectangle(1, 2);
 
+            x.Measure.GetValue(x);
             var group = new Group();
+
+            var op = new Addition();
             group.AddShape(rect);
+            Console.WriteLine($"group{group.CalculateMeasure(op)}"); //1
             group.AddShape(rect2);
-            group.foo();
+            Console.WriteLine($"group{group.CalculateMeasure(op)}"); //2
+            group.AddShape(foo);
+            Console.WriteLine($"group{group.CalculateMeasure(op)}"); //3
+            group.AddShape(foo);
+            Console.WriteLine($"group{group.CalculateMeasure(op)}"); //4
+            group.AddShape(foo);
+            Console.WriteLine($"group{group.CalculateMeasure(op)}"); //5
+            group.AddShape(foo);
+            Console.WriteLine($"group{group.CalculateMeasure(op)}"); //6
+            group.AddShape(foo);
+            Console.WriteLine($"group{group.CalculateMeasure(op)}");
+            group.AddShape(foo);
+            Console.WriteLine($"group{group.CalculateMeasure(op)}");
+
         }
     }
 }
