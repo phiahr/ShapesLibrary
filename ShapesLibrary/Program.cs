@@ -45,6 +45,48 @@ namespace ShapesLibrary
         }
     }
 
+    public class Circle: Shape<Circle>
+    {
+        public int Radius { get; }
+        public Circle(int radius)
+        {
+            Radius = radius;
+
+            Measure = new CircleArea();
+        }
+    }
+
+    public class CircleArea: Measure<Circle>
+    {
+        public override double GetValue(Circle circle)
+        {
+            return circle.Radius * circle.Radius * Math.PI;
+        }
+    }
+
+    public class TestMeasure<TShape> : Measure<TShape>
+    {
+        public override double GetValue(TShape shape)
+        {
+            return 2;
+        }
+
+    public class Cuboid: Shape<Cuboid>
+    {
+        public int Width { get; }
+        public int Height { get; }
+        public int Depth { get; }
+
+        //public Measure<Rectangle> Measure { get;set; }
+        public Cuboid(int width, int height, int depth)
+        {
+            Width = width;
+            Height = height;
+            Depth = depth;
+            Measure = new TestMeasure<Cuboid>();
+        }
+    }
+
     public abstract class Operator
     {
         //public abstract double CalculateGroup(Group group);
@@ -94,6 +136,10 @@ namespace ShapesLibrary
         static void Main(string[] args)
         {
             var rect = new Rectangle(6, 8);
+            var circ = new Circle(2);
+            var cub = new Cuboid(4, 2, 1);
+
+
             var rect2 = new Rectangle(2, 4);
             var rectArea = new RectangleArea();
             rectArea.GetValue(rect2);
