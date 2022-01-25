@@ -1,10 +1,11 @@
 ﻿using System;
 namespace ShapesLibrary
 {
-    public class ExampleCustomMeasure
+    public class ExampleCustomMeasure: Measure<Circle>
     {
-        public ExampleCustomMeasure()
+        public override double GetValue(Circle circle)
         {
+            return circle.Radius * 2;
         }
     }
 }

@@ -1,18 +1,26 @@
 ﻿using System;
-//namespace ShapesLibrary
-//{
-//    public class Cuboid: Shape<Cuboid>
-//    {
-//        // has to be set to public, to be able to calculate measures (eg. CuboidVolume)
-//        public readonly int Width;
-//        public readonly int Height;
-//        public readonly int Depth;
+namespace ShapesLibrary
+{
+    public class Cuboid : Shape
+    {
+        public int Width { get; }
+        public int Height { get; }
+        public int Depth { get; }
+        public Measure<Cuboid> Measure { get; set; }
 
-//        public Cuboid(int width, int height, int depth)
-//        {
-//            this.Width = width;
-//            this.Height = height;
-//            this.Depth = depth;
-//        }
-//    }
-//}
+        public Cuboid(int width, int height, int depth)
+        {
+            this.Width = width;
+            this.Height = height;
+            this.Depth = depth;
+
+            // Default Measure
+            Measure = new CuboidArea();
+        }
+
+        public override double GetMeasureValue()
+        {
+            return Measure.GetValue(this);
+        }
+    }
+}

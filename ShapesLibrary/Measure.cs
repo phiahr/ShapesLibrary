@@ -1,10 +1,8 @@
 ﻿using System;
 namespace ShapesLibrary
 {
-    public class Measure
+    public abstract class Measure<TShape>
     {
-        public Measure()
-        {
-        }
+        public abstract double GetValue(TShape shape);
     }
 }

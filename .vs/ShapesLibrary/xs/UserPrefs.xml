@@ -1,24 +1,28 @@
 ﻿<Properties StartupConfiguration="{6A8C7921-6300-4E69-B19A-2CB26638CBC4}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="ShapesLibrary/CircleArea.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ShapesLibrary/Multiplication.cs">
     <Files>
-      <File FileName="ShapesLibrary/Program.cs" Line="75" Column="1" />
-      <File FileName="ShapesLibrary/BaseShape.cs" Line="42" Column="4" />
-      <File FileName="ShapesLibrary/BaseMeasure.cs" Line="6" Column="1" />
-      <File FileName="ShapesLibrary/BaseOperator.cs" Line="8" Column="1" />
-      <File FileName="ShapesLibrary/ShapeGroup.cs" Line="43" Column="1" />
-      <File FileName="ShapesLibrary/Rectangle.cs" Line="24" Column="1" />
-      <File FileName="ShapesLibrary/Circle.cs" Line="15" Column="6" />
-      <File FileName="ShapesLibrary/Cuboid.cs" Line="18" Column="4" />
-      <File FileName="ShapesLibrary/CuboidVolume.cs" Line="12" Column="1" />
-      <File FileName="ShapesLibrary/RectangleArea.cs" Line="12" Column="1" />
+      <File FileName="ShapesLibrary/Program.cs" Line="16" Column="1" />
+      <File FileName="ShapesLibrary/Rectangle.cs" Line="11" Column="1" />
+      <File FileName="ShapesLibrary/Circle.cs" Line="11" Column="29" />
+      <File FileName="ShapesLibrary/Cuboid.cs" Line="17" Column="31" />
+      <File FileName="ShapesLibrary/CuboidVolume.cs" Line="10" Column="6" />
+      <File FileName="ShapesLibrary/RectangleArea.cs" Line="8" Column="38" />
       <File FileName="ShapesLibrary/CircleArea.cs" Line="10" Column="6" />
+      <File FileName="ShapesLibrary/Operator.cs" Line="3" Column="10" />
+      <File FileName="ShapesLibrary/Addition.cs" Line="3" Column="1" />
+      <File FileName="ShapesLibrary/Group.cs" Line="3" Column="1" />
+      <File FileName="ShapesLibrary/Measure.cs" Line="7" Column="6" />
+      <File FileName="ShapesLibrary/Shape.cs" Line="6" Column="26" />
+      <File FileName="ShapesLibrary/CuboidArea.cs" Line="10" Column="6" />
+      <File FileName="ShapesLibrary/ExampleCustomMeasure.cs" Line="10" Column="6" />
+      <File FileName="ShapesLibrary/Multiplication.cs" Line="6" Column="9" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="ShapesLibrary" expanded="True">
             <Node name="ShapesLibrary" expanded="True">
-              <Node name="CircleArea.cs" selected="True" />
+              <Node name="Multiplication.cs" selected="True" />
             </Node>
           </Node>
         </State>
