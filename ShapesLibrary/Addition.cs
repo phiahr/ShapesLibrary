@@ -6,10 +6,10 @@ namespace ShapesLibrary
     public class Addition : Operator
     {
 
-        public override double Calculate(List<Shape> shapes)
+        public override double Calculate(List<IShape> shapes)
         {
             double result = 0;
-            foreach (Shape shape in shapes)
+            foreach (IShape shape in shapes)
             {
                 result += shape.GetMeasureValue();
             }
@@ -18,7 +18,7 @@ namespace ShapesLibrary
 
 
         // alternative way of calculating multiple shapes
-        public override double Calculate(Shape x, Shape y)
+        public override double Calculate(IShape x, IShape y)
         {
             double result = x.GetMeasureValue() + y.GetMeasureValue();
             return result;

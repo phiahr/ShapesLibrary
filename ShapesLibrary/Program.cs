@@ -8,37 +8,19 @@ namespace ShapesLibrary
         static void Main(string[] args)
         {
             var rect = new Rectangle(6, 8);
+            var circ = new Circle(3);
+            var cub = new Cuboid(4, 2, 1);
 
-            // Example for Point 2 in Design/OOP Principles
-            //var rect2 = new Rectangle(2, 4);
-            //var rectArea = new RectangleArea();
-            //rectArea.GetValue(rect2);
-            //Console.WriteLine($"rect{rectArea.GetValue(rect)}");
-            //Console.WriteLine($"rect{rectArea.GetValue(rect2)}");
 
-            var circ = new Circle(6);
-            var cub = new Cuboid(2, 4, 6);
+            var rect2 = new Rectangle(2, 4);
+            var rectArea = new RectangleArea();
+            rectArea.GetValue(rect2);
+            Console.WriteLine($"rect{rectArea.GetValue(rect)}");
+            Console.WriteLine($"rect{rectArea.GetValue(rect2)}");
+            Rectangle x = new Rectangle(2, 4);
+            var foo = new Rectangle(1, 2);
 
-            Console.WriteLine($"Rectangle with width {rect.Width} and height {rect.Height} has measure: {rect.Measure.GetValue(rect)}");
-            Console.WriteLine($"Circle with radius {circ.Radius} has measure: {circ.Measure.GetValue(circ)}");
-            Console.WriteLine($"Cuboid with width {cub.Width}, height {cub.Height} and depth {cub.Depth} has measure: {cub.Measure.GetValue(cub)}");
-
-            Console.WriteLine("Set new measure for circle: ");
-            circ.Measure = new ExampleCustomMeasure();
-            Console.WriteLine($"Circle has new measure: {circ.Measure.GetValue(circ)}");
-
-            Console.WriteLine("Set new measure for cuboid: ");
-            cub.Measure = new CuboidVolume();
-            Console.WriteLine($"Cuboid has new measure: {cub.Measure.GetValue(cub)}");
-
-            Console.WriteLine("Create new Group");
-            var group = new Group();
-
-            group.AddShape(rect);
-            Console.WriteLine("Added Rectangle to group");
-
-            group.AddShape(circ);
-            Console.WriteLine("Added Circle to group");
+            var group = new Group(); 
 
             group.AddShape(cub);
             Console.WriteLine("Added Cuboid to group");
@@ -48,6 +30,9 @@ namespace ShapesLibrary
             var groupMeasure = group.CalculateMeasure(op);
 
             Console.WriteLine($"Result: {groupMeasure}");
+
+            var customMeasure = new ExampleCustomMeasure<Rectangle>();
+            Console.WriteLine(customMeasure.GetValue(rect));
         }
     }
 }

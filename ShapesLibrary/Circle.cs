@@ -1,10 +1,9 @@
 ﻿using System;
 namespace ShapesLibrary
 {
-    public class Circle : Shape
+    public class Circle: Shape<Circle>
     {
         public int Radius { get; }
-        public Measure<Circle> Measure { get; set; }
 
         public Circle(int radius)
         {
@@ -14,9 +13,5 @@ namespace ShapesLibrary
             Measure = new CircleArea();
         }
 
-        public override double GetMeasureValue()
-        {
-            return Measure.GetValue(this);
-        }
     }
 }
