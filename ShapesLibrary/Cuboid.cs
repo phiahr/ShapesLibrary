@@ -3,6 +3,7 @@ namespace ShapesLibrary
 {
     public class Cuboid: Shape<Cuboid>
     {
+        // 5. 6., see Rectangle
         public int Width { get; }
         public int Height { get; }
         public int Depth { get; }

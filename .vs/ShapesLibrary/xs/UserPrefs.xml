@@ -1,29 +1,28 @@
 ﻿<Properties StartupConfiguration="{6A8C7921-6300-4E69-B19A-2CB26638CBC4}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="ShapesLibrary/IShape.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ShapesLibrary/Program.cs">
     <Files>
-      <File FileName="ShapesLibrary/Program.cs" Line="6" Column="1" />
-      <File FileName="ShapesLibrary/Rectangle.cs" Line="13" Column="1" />
-      <File FileName="ShapesLibrary/Circle.cs" Line="15" Column="1" />
-      <File FileName="ShapesLibrary/Cuboid.cs" Line="18" Column="10" />
-      <File FileName="ShapesLibrary/CuboidVolume.cs" Line="9" Column="10" />
+      <File FileName="ShapesLibrary/Program.cs" Line="48" Column="13" />
+      <File FileName="ShapesLibrary/Rectangle.cs" Line="9" Column="18" />
+      <File FileName="ShapesLibrary/Circle.cs" Line="6" Column="9" />
+      <File FileName="ShapesLibrary/Cuboid.cs" Line="6" Column="32" />
+      <File FileName="ShapesLibrary/CuboidVolume.cs" Line="5" Column="6" />
       <File FileName="ShapesLibrary/RectangleArea.cs" Line="10" Column="6" />
       <File FileName="ShapesLibrary/CircleArea.cs" Line="10" Column="6" />
-      <File FileName="ShapesLibrary/Operator.cs" Line="22" Column="1" />
-      <File FileName="ShapesLibrary/Group.cs" Line="9" Column="15" />
+      <File FileName="ShapesLibrary/Operator.cs" Line="14" Column="70" />
+      <File FileName="ShapesLibrary/Group.cs" Line="27" Column="10" />
       <File FileName="ShapesLibrary/Measure.cs" Line="4" Column="42" />
-      <File FileName="ShapesLibrary/Shape.cs" Line="16" Column="6" />
       <File FileName="ShapesLibrary/CuboidArea.cs" Line="10" Column="6" />
-      <File FileName="ShapesLibrary/ExampleCustomMeasure.cs" Line="8" Column="21" />
+      <File FileName="ShapesLibrary/ExampleCustomMeasure.cs" Line="20" Column="26" />
       <File FileName="ShapesLibrary/Multiplication.cs" Line="21" Column="10" />
-      <File FileName="ShapesLibrary/Addition.cs" Line="21" Column="61" />
-      <File FileName="ShapesLibrary/IShape.cs" Line="1" Column="1" />
+      <File FileName="ShapesLibrary/Addition.cs" Line="21" Column="59" />
+      <File FileName="ShapesLibrary/Shape.cs" Line="3" Column="2" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="ShapesLibrary" expanded="True">
             <Node name="ShapesLibrary" expanded="True">
-              <Node name="IShape.cs" selected="True" />
+              <Node name="Program.cs" selected="True" />
             </Node>
           </Node>
         </State>

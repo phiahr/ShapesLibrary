@@ -5,18 +5,18 @@ namespace ShapesLibrary
 {
     public class Group
     {
-        List<IShape> shapes;
+        List<Shape> shapes;
         public Group()
         {
-            shapes = new List<IShape>();
+            shapes = new List<Shape>();
         }
 
-        public void AddShape(IShape shape)
+        public void AddShape(Shape shape)
         {
             shapes.Add(shape);
         }
 
-        public void RemoveShape(IShape shape)
+        public void RemoveShape(Shape shape)
         {
             shapes.Remove(shape);
         }

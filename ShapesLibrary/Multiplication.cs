@@ -5,10 +5,10 @@ namespace ShapesLibrary
 {
     public class Multiplication : Operator
     {
-        public override double Calculate(List<IShape> shapes)
+        public override double Calculate(List<Shape> shapes)
         {
             double result = 1;
-            foreach (IShape shape in shapes)
+            foreach (Shape shape in shapes)
             {
                 result *= shape.GetMeasureValue();
             }
@@ -27,7 +27,7 @@ namespace ShapesLibrary
             return result;
         }
 
-        public override double Calculate(IShape x, IShape y)
+        public override double Calculate(Shape x, Shape y)
         {
             double result = x.GetMeasureValue() * y.GetMeasureValue();
             return result;
